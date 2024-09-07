@@ -12,7 +12,6 @@ const deleteTransaction = (id) => {
   emit("transactionDeleted", id);
 };
 
-// console.log(transactions.length);
 </script>
 
 <template>
@@ -26,7 +25,8 @@ const deleteTransaction = (id) => {
       :key="transaction.id"
       :class="transaction.amount < 0 ? 'minus' : 'plus'"
     >
-      {{ transaction.text }} <span>₹{{ transaction.amount.toFixed(2) }}</span
+      {{ transaction.text }}
+      <span>₹{{ Math.abs(transaction.amount).toFixed(2) }}</span
       ><button class="delete-btn" @click="deleteTransaction(transaction.id)">
         x
       </button>
