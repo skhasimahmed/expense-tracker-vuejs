@@ -15,7 +15,7 @@ const deleteTransaction = () => {
 };
 
 const checkCharacters = (str) => {
-  const max = 35;
+  const max = 25;
   return str.length > max ? str.substring(0, max) + "..." : str;
 };
 </script>
