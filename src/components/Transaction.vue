@@ -22,6 +22,13 @@ const checkCharacters = (str) => {
 
 <template>
   <li :key="transaction.id" :class="transaction.amount < 0 ? 'minus' : 'plus'">
+    <div
+      class="ribbon"
+      :class="props.transaction.amount > 0 ? 'ribbon-credit' : 'ribbon-debit'"
+    >
+      {{ props.transaction.amount > 0 ? "Credit" : "Debit" }}
+    </div>
+
     <div>
       <p style="margin: 0px" :title="transaction.text">
         {{ checkCharacters(transaction.text) }}
