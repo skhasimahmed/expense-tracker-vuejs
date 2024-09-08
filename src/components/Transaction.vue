@@ -15,7 +15,7 @@ const deleteTransaction = () => {
 };
 
 const checkCharacters = (str) => {
-  const max = 35;
+  const max = 25;
   return str.length > max ? str.substring(0, max) + "..." : str;
 };
 </script>
@@ -45,7 +45,7 @@ const checkCharacters = (str) => {
     </div>
 
     <div style="display: flex; align-items: center">
-      ₹{{ Math.abs(transaction.amount).toFixed(2) }}
+      <p>₹{{ Math.abs(transaction.amount).toFixed(2) }}</p>
     </div>
     <button class="delete-btn" @click="deleteTransaction">x</button>
   </li>
