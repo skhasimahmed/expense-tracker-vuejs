@@ -50,7 +50,7 @@ const onSubmit = () => {
         (negative - expense, positive - income)</label
       >
       <input
-        type="text"
+        type="number"
         id="amount"
         placeholder="Enter amount..."
         v-model="amount"
