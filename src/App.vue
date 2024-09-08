@@ -46,6 +46,7 @@ const handleTransactionSubmitted = (transactionData) => {
     id: generateUniqueId(),
     text: transactionData.text,
     amount: transactionData.amount,
+    date: new Date(),
   });
 
   saveTransactionsToLocalStorage();

@@ -20,10 +20,8 @@ const onSubmit = () => {
   };
 
   const transactionData = {
-    id: generateUniqueId(),
     text: text.value,
     amount: parseFloat(amount.value),
-    date: new Date(),
   };
 
   emit("transactionSubmitted", transactionData);
