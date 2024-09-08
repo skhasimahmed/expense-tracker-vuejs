@@ -15,9 +15,15 @@ const onSubmit = () => {
     return;
   }
 
+  const generateUniqueId = () => {
+    return Math.floor(Math.random() * 1000000);
+  };
+
   const transactionData = {
+    id: generateUniqueId(),
     text: text.value,
     amount: parseFloat(amount.value),
+    date: new Date(),
   };
 
   emit("transactionSubmitted", transactionData);

@@ -1,4 +1,6 @@
 <script setup>
+import Transaction from "./Transaction.vue";
+
 const props = defineProps({
   transactions: {
     type: Array,
@@ -8,10 +10,9 @@ const props = defineProps({
 
 const emit = defineEmits(["transactionDeleted"]);
 
-const deleteTransaction = (id) => {
+const handleTransactionDeleted = (id) => {
   emit("transactionDeleted", id);
 };
-
 </script>
 
 <template>
@@ -20,16 +21,11 @@ const deleteTransaction = (id) => {
   <p v-if="transactions.length === 0">No transactions yet.</p>
 
   <ul id="list" class="list" v-if="transactions.length">
-    <li
-      v-for="transaction in transactions"
+    <Transaction
       :key="transaction.id"
-      :class="transaction.amount < 0 ? 'minus' : 'plus'"
-    >
-      {{ transaction.text }}
-      <span>₹{{ Math.abs(transaction.amount).toFixed(2) }}</span
-      ><button class="delete-btn" @click="deleteTransaction(transaction.id)">
-        x
-      </button>
-    </li>
+      v-for="transaction in transactions"
+      :transaction="transaction"
+      @transactionDeleted="handleTransactionDeleted"
+    />
   </ul>
 </template>

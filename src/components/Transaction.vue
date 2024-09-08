@@ -1,0 +1,38 @@
+<script setup>
+import moment from "moment";
+
+const props = defineProps({
+  transaction: {
+    type: Object,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["transactionDeleted"]);
+
+const deleteTransaction = () => {
+  emit("transactionDeleted", props.transaction.id);
+};
+</script>
+
+<template>
+  <li :key="transaction.id" :class="transaction.amount < 0 ? 'minus' : 'plus'">
+    <div>
+      <p style="margin: 0px">{{ transaction.text }}</p>
+      <span
+        style="
+          font-size: 11px;
+          font-style: italic;
+          font-weight: 500;
+          color: gray;
+        "
+        >{{ moment(transaction.date).fromNow() }}</span
+      >
+    </div>
+
+    <div style="display: flex; align-items: center">
+      ₹{{ Math.abs(transaction.amount).toFixed(2) }}
+    </div>
+    <button class="delete-btn" @click="deleteTransaction">x</button>
+  </li>
+</template>
