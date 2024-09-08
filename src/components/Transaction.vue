@@ -13,12 +13,19 @@ const emit = defineEmits(["transactionDeleted"]);
 const deleteTransaction = () => {
   emit("transactionDeleted", props.transaction.id);
 };
+
+const checkCharacters = (str) => {
+  const max = 35;
+  return str.length > max ? str.substring(0, max) + "..." : str;
+};
 </script>
 
 <template>
   <li :key="transaction.id" :class="transaction.amount < 0 ? 'minus' : 'plus'">
     <div>
-      <p style="margin: 0px">{{ transaction.text }}</p>
+      <p style="margin: 0px" :title="transaction.text">
+        {{ checkCharacters(transaction.text) }}
+      </p>
       <span
         style="
           font-size: 11px;
